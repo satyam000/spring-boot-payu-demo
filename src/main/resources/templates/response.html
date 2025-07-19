@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Payment Response</title></head>
+<body>
+<h2>Payment Response</h2>
+<ul>
+  <li th:each="entry : ${response.entrySet()}">
+    <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+  </li>
+</ul>
+</body>
+</html>

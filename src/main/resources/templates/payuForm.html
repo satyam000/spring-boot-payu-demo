@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body onload="document.forms['payuForm'].submit();">
+<form th:action="${action}" method="post" name="payuForm">
+    <input type="hidden" name="key" th:value="${key}" />
+    <input type="hidden" name="txnid" th:value="${txnid}" />
+    <input type="hidden" name="amount" th:value="${amount}" />
+    <input type="hidden" name="productinfo" th:value="${productinfo}" />
+    <input type="hidden" name="firstname" th:value="${firstname}" />
+    <input type="hidden" name="email" th:value="${email}" />
+    <input type="hidden" name="phone" th:value="${phone}" />
+    <input type="hidden" name="surl" th:value="${surl}" />
+    <input type="hidden" name="furl" th:value="${furl}" />
+    <input type="hidden" name="hash" th:value="${hash}" />
+</form>
+</body>
+</html>
