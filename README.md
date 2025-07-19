@@ -7,11 +7,21 @@ This Spring Boot project demonstrates integration with PayU Money using server-s
 - Secure hash generation
 - Response handling
 - Sample Thymeleaf frontend
+- Environment variable-based merchant key and salt
 
-## Usage
-1. Replace `yourMerchantKey` and `yourSaltKey` in `PaymentController.java`
-2. Run the app:
-   ```
-   mvn spring-boot:run
-   ```
-3. Open: `http://localhost:8080`
+## Setup
+
+Set your environment variables before running:
+
+```bash
+export PAYU_MERCHANT_KEY=yourMerchantKey
+export PAYU_SALT_KEY=yourSaltKey
+```
+
+Then run:
+
+```bash
+mvn spring-boot:run
+```
+
+Visit: [http://localhost:8080](http://localhost:8080)

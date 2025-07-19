@@ -1,6 +1,7 @@
 package com.example.payu.controller;
 
 import com.example.payu.util.HashUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,11 @@ import java.util.UUID;
 @Controller
 public class PaymentController {
 
-    private static final String MERCHANT_KEY = "yourMerchantKey";
-    private static final String SALT = "yourSaltKey";
+    @Value("${payu.merchant.key}")
+    private String merchantKey;
+
+    @Value("${payu.salt.key}")
+    private String salt;
 
     @GetMapping("/")
     public String home() {
@@ -28,11 +32,11 @@ public class PaymentController {
         String txnid = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 20);
         String productinfo = "Test Product";
 
-        String hashString = MERCHANT_KEY + "|" + txnid + "|" + amount + "|" + productinfo + "|" +
-                firstname + "|" + email + "|||||||||||" + SALT;
+        String hashString = merchantKey + "|" + txnid + "|" + amount + "|" + productinfo + "|" +
+                firstname + "|" + email + "|||||||||||" + salt;
         String hash = HashUtil.generateHash(hashString);
 
-        model.addAttribute("key", MERCHANT_KEY);
+        model.addAttribute("key", merchantKey);
         model.addAttribute("txnid", txnid);
         model.addAttribute("amount", amount);
         model.addAttribute("productinfo", productinfo);
